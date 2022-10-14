@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CONSULADO DO BRASIL</title>
+  </head>
+  <body onload="resultado()">
+    <h1>REGISTRO DE ESTRANGEIRO NO BRASIL</h1>
+    <div id="resultado"></div>
+    <p>
+      País de residência:
+      <input
+        type="text"
+        name="txtPais"
+        id="txtPais"
+        placeholder="Infome o País"
+      />
+      <input type="button" value="verificar" id="verificar" />
+    </p>
+
+    <script>
+      function resultado(nacionalidadeFinal) {
+        if (nacionalidadeFinal == undefined) {
+          nacionalidadeFinal = "...";
+        }
+
+        let placeResultado = document.getElementById("resultado");
+
+        placeResultado.innerHTML = `<p>Nacionlidade: <input type="text" name="txtNacionalidade" id="txtNacionalidade" disabled placeholder = "${nacionalidadeFinal}" /></p>`;
+      }
+
+      function verificarNacionalidade() {
+        var paisResidencia = document.getElementById("txtPais").value;
+        var nacionalidadeFinal = "";
+
+        if (paisResidencia == "Brasil" || paisResidencia == "brasil") {
+          nacionalidadeFinal = "Brasileiro";
+        } else {
+          nacionalidadeFinal = "Estrangeiro";
+        }
+
+        resultado(nacionalidadeFinal);
+
+      }
+
+      let callVerificar = document.querySelector("input#verificar");
+      callVerificar.addEventListener("click", verificarNacionalidade);
+    </script>
+  </body>
+</html>
